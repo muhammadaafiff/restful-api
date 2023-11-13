@@ -1,8 +1,9 @@
+module.exports = 
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "25.Maret.2002",
+    "database": "restful_api",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
