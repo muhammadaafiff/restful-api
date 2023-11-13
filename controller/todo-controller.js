@@ -83,14 +83,49 @@ module.exports = {
       );
 
       res.json({
-        message: "Success Update Todo by ID",
+        message: `Success Update Todo ID: ${todoId}`,
       });
     } catch (err) {
       res.json(err.message);
     }
   },
 
-  deleteTodoById: (req, res) => {},
+  deleteTodoById: async (req, res) => {
+    const user = req.user;
+    const todoId = req.params.id;
 
-  deleteAllTodo: (req, res) => {},
+    try {
+      const todos = await Todo.destroy({
+        where: {
+          [Op.and]: [{ userId: user.id }, { id: todoId }],
+        },
+      });
+
+      if (!todos) throw new Error("Todo not found");
+
+      res.json({
+        message: `Success Delete Todo: ${todoId}`,
+      });
+    } catch (err) {
+      res.json(err.message);
+    }
+  },
+
+  deleteAllTodo: async (req, res) => {
+    const user = req.user;
+
+    try {
+        await Todo.destroy({
+          where: {
+            userId: user.id,
+          },
+        });
+  
+        res.json({
+          message: "Success Delete All Todo",
+        });
+      } catch (err) {
+        res.json(err.message);
+      }
+    },
 };
