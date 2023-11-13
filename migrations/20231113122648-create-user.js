@@ -22,26 +22,18 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull : false,
         unique : true,
-        validate: {
-          isEmail : true
-        }
       },
       password: {
         type: Sequelize.STRING,
         allowNull : false,
-        validate: {
-          isAlphanumeric : true
-        }
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: new Date()
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: new Date()
       }
     });
   },

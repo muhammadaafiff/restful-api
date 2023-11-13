@@ -11,7 +11,7 @@ module.exports = {
         try {
           const user = await User.findOne({ where: { username: data.username } });
           const passwordMatch = bcrypt.compareSync(data.password, user.password);
-          const token = jwt.sign({ id: user.id }, process.env.JWT_KEY);
+          const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_KEY);
     
           if (!user || !passwordMatch) throw new Error("username or password incorrect");
     
