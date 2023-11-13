@@ -57,7 +57,7 @@ module.exports = {
         },
       });
 
-      if (!todo) throw new Error("data not found");
+      if (!todo) throw new Error("Data not found");
 
       res.status(200).json({
         status: true,
@@ -66,11 +66,11 @@ module.exports = {
         data: todo,
       });
     } catch (err) {
-        res.status(404).json({
-            status: false,
-            code: 404,
-            message: err.message,
-          });
+      res.status(404).json({
+        status: false,
+        code: 404,
+        message: err.message,
+      });
     }
   },
 
@@ -105,11 +105,11 @@ module.exports = {
         message: `Success update todo id: ${todoId}`,
       });
     } catch (err) {
-        res.status(400).json({
-            status: false,
-            code: 400,
-            message: err.message,
-          });
+      res.status(400).json({
+        status: false,
+        code: 400,
+        message: err.message,
+      });
     }
   },
 
@@ -132,11 +132,11 @@ module.exports = {
         message: `Success delete todo id: ${todoId}`,
       });
     } catch (err) {
-        res.status(404).json({
-            status: false,
-            code: 404,
-            message: err.message,
-          });
+      res.status(404).json({
+        status: false,
+        code: 404,
+        message: err.message,
+      });
     }
   },
 
@@ -156,11 +156,11 @@ module.exports = {
         message: "Success delete all todo",
       });
     } catch (err) {
-        res.json({
-            status: false,
-            code: 500,
-            message: err.message,
-          });
+      res.json({
+        status: false,
+        code: 500,
+        message: err.message,
+      });
     }
   },
 };
