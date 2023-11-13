@@ -12,12 +12,12 @@ module.exports = {
           const passwordMatch = bcrypt.compareSync(data.password, user.password);
           const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_KEY);
     
-          if (!user || !passwordMatch) throw new Error("username or password incorrect");
+          if (!user || !passwordMatch) throw new Error("Username or password incorrect");
     
           res.status(200).json({
             status: true,
             code: 200,
-            message: "login succesfull",
+            message: "Login succesfull",
             userId: user.id,
             token,
           });
@@ -43,7 +43,7 @@ module.exports = {
       res.status(201).json({
         status: true,
         code: 201,
-        message: "register succesfull",
+        message: "Register succesfull",
       });
     } catch (err) {
       res.status(400).json({
