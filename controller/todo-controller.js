@@ -62,7 +62,7 @@ module.exports = {
       res.status(200).json({
         status: true,
         code: 200,
-        message: `success get todo id: ${todoId}`,
+        message: `Success get todo id: ${todoId}`,
         data: todo,
       });
     } catch (err) {
