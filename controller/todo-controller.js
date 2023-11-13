@@ -3,18 +3,18 @@ const { Todo } = require("../models");
 const { User } = require("../models");
 
 module.exports = {
-    createTodo: async (req, res) => {
-        const data = req.body;
-        try {
-          await Todo.create(data);
-    
-          res.json({
-            message: "Success Create Todo",
-          });
-        } catch (err) {
-          res.json(err.message);
-        }
-      },
+  createTodo: async (req, res) => {
+    const data = req.body;
+    try {
+      await Todo.create(data);
+
+      res.json({
+        message: "Success Create Todo",
+      });
+    } catch (err) {
+      res.json(err.message);
+    }
+  },
 
   getAllTodo: async (req, res) => {
     const user = req.user;
@@ -49,7 +49,7 @@ module.exports = {
       if (!todo) throw new Error("Todo not found");
 
       res.json({
-        message: "Success get Todo by Id",
+        message: `Success Get Todo ID ${todoId}`,
         data: todo,
       });
     } catch (err) {
@@ -115,17 +115,17 @@ module.exports = {
     const user = req.user;
 
     try {
-        await Todo.destroy({
-          where: {
-            userId: user.id,
-          },
-        });
-  
-        res.json({
-          message: "Success Delete All Todo",
-        });
-      } catch (err) {
-        res.json(err.message);
-      }
-    },
+      await Todo.destroy({
+        where: {
+          userId: user.id,
+        },
+      });
+
+      res.json({
+        message: "Success Delete All Todo",
+      });
+    } catch (err) {
+      res.json(err.message);
+    }
+  },
 };

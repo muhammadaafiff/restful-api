@@ -6,15 +6,15 @@ module.exports = {
     await queryInterface.bulkInsert("Todos", [
       {
         value: "belajar node js",
-        userId: "25",
+        userId: "1",
       },
       {
         value: "belajar express js",
-        userId: "25",
+        userId: "1",
       },
       {
         value: "belajar sequelize",
-        userId: "25",
+        userId: "1",
       },
     ]);
   },
