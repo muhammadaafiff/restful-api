@@ -38,7 +38,9 @@ module.exports = {
 
       await User.create(data);
 
-      res.json({
+      res.status(201).json({
+        status: true,
+        code: 201,
         message: "register succesfull",
       });
     } catch (err) {
