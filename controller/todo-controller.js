@@ -1,6 +1,5 @@
 const { Op } = require("sequelize");
 const { Todo } = require("../models");
-const { User } = require("../models");
 
 module.exports = {
   createTodo: async (req, res) => {
@@ -8,8 +7,10 @@ module.exports = {
     try {
       await Todo.create(data);
 
-      res.json({
-        message: "success create todo",
+      res.status(201).json({
+        status: true,
+        code: 201,
+        message: "Success create todo",
       });
     } catch (err) {
       res.json(err.message);
