@@ -86,7 +86,7 @@ module.exports = {
         },
       });
 
-      if (!todo) throw new Error("Todo not found");
+      if (!todo) throw new Error("Data not found");
       if (value === undefined) throw new Error("Invalid request");
 
       const { dataValues } = todo;
@@ -105,7 +105,11 @@ module.exports = {
         message: `Success update todo id: ${todoId}`,
       });
     } catch (err) {
-      res.json(err.message);
+        res.status(400).json({
+            status: false,
+            code: 400,
+            message: err.message,
+          });
     }
   },
 
