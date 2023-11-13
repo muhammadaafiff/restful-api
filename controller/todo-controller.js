@@ -66,7 +66,7 @@ module.exports = {
         data: todo,
       });
     } catch (err) {
-        res.status(400).status.json({
+        res.status(400).json({
             status: false,
             code: 400,
             message: err.message,
