@@ -156,7 +156,11 @@ module.exports = {
         message: "Success delete all todo",
       });
     } catch (err) {
-      res.json(err.message);
+        res.json({
+            status: false,
+            code: 500,
+            message: err.message,
+          });
     }
   },
 };
