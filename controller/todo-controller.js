@@ -124,7 +124,7 @@ module.exports = {
         },
       });
 
-      if (!todos) throw new Error("Todo not found");
+      if (!todos) throw new Error("Data not found");
 
       res.status(200).json({
         status: true,
