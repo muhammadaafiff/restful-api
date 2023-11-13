@@ -31,12 +31,18 @@ module.exports = {
         },
       });
 
-      res.json({
+      res.status(200).json({
+        status: true,
+        code: 200,
         message: "success get all todo",
         data: todos,
       });
     } catch (err) {
-      res.json(err.message);
+        res.status(500).json({
+            status: false,
+            code: 500,
+            message: "Internal server error",
+          });
     }
   },
 
@@ -58,7 +64,7 @@ module.exports = {
         data: todo,
       });
     } catch (err) {
-      res.json(err.message);
+        res.status.json(err.message);
     }
   },
 
