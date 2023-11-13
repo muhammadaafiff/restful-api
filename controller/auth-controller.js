@@ -22,9 +22,9 @@ module.exports = {
             token,
           });
         } catch (err) {
-          res.json({
-            status: err.status,
-            code: err.code,
+          res.status(400).json({
+            status: false,
+            code: 400,
             message: err.message,
           });
         }
