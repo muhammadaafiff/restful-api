@@ -25,7 +25,7 @@ module.exports = {
           res.status(400).json({
             status: false,
             code: 400,
-            message: "Invalid request",
+            message: err.message,
           });
         }
       },
