@@ -9,7 +9,7 @@ module.exports = {
       await Todo.create(data);
 
       res.json({
-        message: "Success Create Todo",
+        message: "success create todo",
       });
     } catch (err) {
       res.json(err.message);
@@ -27,7 +27,7 @@ module.exports = {
       });
 
       res.json({
-        message: "Success get All Todo",
+        message: "success get all todo",
         data: todos,
       });
     } catch (err) {
@@ -46,10 +46,10 @@ module.exports = {
         },
       });
 
-      if (!todo) throw new Error("Todo not found");
+      if (!todo) throw new Error("todo not found");
 
       res.json({
-        message: `Success Get Todo ID ${todoId}`,
+        message: `success get todo id: ${todoId}`,
         data: todo,
       });
     } catch (err) {
@@ -69,8 +69,8 @@ module.exports = {
         },
       });
 
-      if (!todo) throw new Error("Todo not found");
-      if (value === undefined) throw new Error("Invalid Request");
+      if (!todo) throw new Error("todo not found");
+      if (value === undefined) throw new Error("invalid request");
 
       const { dataValues } = todo;
       await Todo.update(
@@ -83,7 +83,7 @@ module.exports = {
       );
 
       res.json({
-        message: `Success Update Todo ID: ${todoId}`,
+        message: `success update todo id: ${todoId}`,
       });
     } catch (err) {
       res.json(err.message);
@@ -101,10 +101,10 @@ module.exports = {
         },
       });
 
-      if (!todos) throw new Error("Todo not found");
+      if (!todos) throw new Error("todo not found");
 
       res.json({
-        message: `Success Delete Todo: ${todoId}`,
+        message: `success delete todo id: ${todoId}`,
       });
     } catch (err) {
       res.json(err.message);
@@ -122,7 +122,7 @@ module.exports = {
       });
 
       res.json({
-        message: "Success Delete All Todo",
+        message: "success delete all todo",
       });
     } catch (err) {
       res.json(err.message);

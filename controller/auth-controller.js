@@ -1,7 +1,6 @@
 require("dotenv").config()
 
 const bcrypt = require("bcrypt");
-const saltRounds = 10;
 const jwt = require("jsonwebtoken")
 const { User } = require("../models");
 
@@ -21,12 +20,17 @@ module.exports = {
             token,
           });
         } catch (err) {
-          res.json(err.message);
+          res.json({
+            status: err.status,
+            code: err.code,
+            message: err.message,
+          });
         }
       },
 
   register: async (req, res) => {
     const data = req.body;
+    const saltRounds = 10;
 
     try {
         const hashPassword = bcrypt.hashSync(data.password, saltRounds);
@@ -38,7 +42,11 @@ module.exports = {
         message: "register succesfull",
       });
     } catch (err) {
-      res.json(err.message);
+      res.status(400).json({
+        status: false,
+        code: 400,
+        message: err.message,
+      });
     }
   },
 };
