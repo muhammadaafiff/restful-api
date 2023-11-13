@@ -14,7 +14,9 @@ module.exports = {
     
           if (!user || !passwordMatch) throw new Error("username or password incorrect");
     
-          res.json({
+          res.status(200).json({
+            status: true,
+            code: 200,
             message: "login succesfull",
             userId: user.id,
             token,
