@@ -34,7 +34,7 @@ module.exports = {
       res.status(200).json({
         status: true,
         code: 200,
-        message: "success get all todo",
+        message: "Success get all todo",
         data: todos,
       });
     } catch (err) {
