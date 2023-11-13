@@ -13,11 +13,11 @@ module.exports = {
         message: "Success create todo",
       });
     } catch (err) {
-        res.status(400).json({
-            status: false,
-            code: 400,
-            message: "Invalid request",
-          });
+      res.status(400).json({
+        status: false,
+        code: 400,
+        message: "Invalid request",
+      });
     }
   },
 
@@ -38,11 +38,11 @@ module.exports = {
         data: todos,
       });
     } catch (err) {
-        res.status(500).json({
-            status: false,
-            code: 500,
-            message: "Internal server error",
-          });
+      res.status(500).json({
+        status: false,
+        code: 500,
+        message: "Internal server error",
+      });
     }
   },
 
@@ -59,15 +59,14 @@ module.exports = {
 
       if (!todo) throw new Error("todo not found");
 
-      res.json({
-        res.status(200).json({
-          status: true,
-          code: 200,
+      res.status(200).json({
+        status: true,
+        code: 200,
         message: `success get todo id: ${todoId}`,
         data: todo,
       });
     } catch (err) {
-        res.status.json(err.message);
+      res.status.json(err.message);
     }
   },
 
