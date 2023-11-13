@@ -57,7 +57,7 @@ module.exports = {
         },
       });
 
-      if (!todo) throw new Error("todo not found");
+      if (!todo) throw new Error("data not found");
 
       res.status(200).json({
         status: true,
