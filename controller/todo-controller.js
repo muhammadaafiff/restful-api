@@ -4,7 +4,7 @@ const { User } = require("../models");
 
 module.exports = {
     createTodo: async (req, res) => {
-        let data = req.body;
+        const data = req.body;
         try {
           await Todo.create(data);
     
@@ -40,24 +40,55 @@ module.exports = {
     const todoId = req.params.id;
 
     try {
-      const todos = await Todo.findOne({
+      const todo = await Todo.findOne({
         where: {
           [Op.and]: [{ userId: user.id }, { id: todoId }],
         },
       });
 
-      if (!todos) throw new Error("Todo not found");
+      if (!todo) throw new Error("Todo not found");
 
       res.json({
         message: "Success get Todo by Id",
-        data: todos,
+        data: todo,
       });
     } catch (err) {
       res.json(err.message);
     }
   },
 
-  updateTodoById: (req, res) => {},
+  updateTodoById: async (req, res) => {
+    const user = req.user;
+    const todoId = req.params.id;
+    const { value } = req.body;
+
+    try {
+      const todo = await Todo.findOne({
+        where: {
+          [Op.and]: [{ userId: user.id }, { id: todoId }],
+        },
+      });
+
+      if (!todo) throw new Error("Todo not found");
+      if (value === undefined) throw new Error("Invalid Request");
+
+      const { dataValues } = todo;
+      await Todo.update(
+        { ...dataValues, ["value"]: value },
+        {
+          where: {
+            id: todoId,
+          },
+        }
+      );
+
+      res.json({
+        message: "Success Update Todo by ID",
+      });
+    } catch (err) {
+      res.json(err.message);
+    }
+  },
 
   deleteTodoById: (req, res) => {},
 
