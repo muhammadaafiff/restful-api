@@ -13,7 +13,11 @@ module.exports = {
         message: "Success create todo",
       });
     } catch (err) {
-      res.json(err.message);
+        res.status(400).json({
+            status: false,
+            code: 400,
+            message: "Invalid request",
+          });
     }
   },
 
