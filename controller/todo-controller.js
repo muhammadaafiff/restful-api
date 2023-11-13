@@ -1,8 +1,20 @@
 const { Op } = require("sequelize");
 const { Todo } = require("../models");
+const { User } = require("../models");
 
 module.exports = {
-  postTodo: (req, res) => {},
+    createTodo: async (req, res) => {
+        let data = req.body;
+        try {
+          await Todo.create(data);
+    
+          res.json({
+            message: "Success Create Todo",
+          });
+        } catch (err) {
+          res.json(err.message);
+        }
+      },
 
   getAllTodo: async (req, res) => {
     const user = req.user;
@@ -15,7 +27,7 @@ module.exports = {
       });
 
       res.json({
-        message: "Success getAll Todo",
+        message: "Success get All Todo",
         data: todos,
       });
     } catch (err) {
@@ -37,7 +49,7 @@ module.exports = {
       if (!todos) throw new Error("Todo not found");
 
       res.json({
-        message: "Success getAll Todo",
+        message: "Success get Todo by Id",
         data: todos,
       });
     } catch (err) {
