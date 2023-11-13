@@ -124,13 +124,19 @@ module.exports = {
         },
       });
 
-      if (!todos) throw new Error("todo not found");
+      if (!todos) throw new Error("Todo not found");
 
-      res.json({
-        message: `success delete todo id: ${todoId}`,
+      res.status(200).json({
+        status: true,
+        code: 200,
+        message: `Success delete todo id: ${todoId}`,
       });
     } catch (err) {
-      res.json(err.message);
+        res.status(404).json({
+            status: false,
+            code: 404,
+            message: err.message,
+          });
     }
   },
 
