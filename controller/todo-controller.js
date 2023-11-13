@@ -150,8 +150,10 @@ module.exports = {
         },
       });
 
-      res.json({
-        message: "success delete all todo",
+      res.status(200).json({
+        status: true,
+        code: 200,
+        message: "Success delete all todo",
       });
     } catch (err) {
       res.json(err.message);
