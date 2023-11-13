@@ -86,8 +86,8 @@ module.exports = {
         },
       });
 
-      if (!todo) throw new Error("todo not found");
-      if (value === undefined) throw new Error("invalid request");
+      if (!todo) throw new Error("Todo not found");
+      if (value === undefined) throw new Error("Invalid request");
 
       const { dataValues } = todo;
       await Todo.update(
@@ -99,8 +99,10 @@ module.exports = {
         }
       );
 
-      res.json({
-        message: `success update todo id: ${todoId}`,
+      res.status(200).json({
+        status: true,
+        code: 200,
+        message: `Success update todo id: ${todoId}`,
       });
     } catch (err) {
       res.json(err.message);
